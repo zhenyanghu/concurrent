@@ -31,13 +31,13 @@ public class ThreadLocalOOM {
                     ThreadLocalOOM oom = new ThreadLocalOOM();
                     oom.localVariable = new ThreadLocal<>();
                     oom.localVariable.set(new LocalVariable());
-                    //new LocalVariable();
+//                    new LocalVariable();
                     System.out.println("use local varaible");
-                    //oom.localVariable.remove();
+                    oom.localVariable.remove();
                 }
             });
 
-            Thread.sleep(100);
+            Thread.sleep(1000);
         }
         System.out.println("pool execute over");
     }

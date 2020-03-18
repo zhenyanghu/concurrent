@@ -4,7 +4,7 @@ package cn.enjoyedu.ch1.wn;
  * 类说明：快递实体类
  */
 public class Express {
-    public final static String CITY = "ShangHai";
+    public final static String CITY = "Shanghai";
     private int km;/*快递运输里程数*/
     private String site;/*快递到达地点*/
 
@@ -24,7 +24,7 @@ public class Express {
 
     /* 变化地点，然后通知处于wait状态并需要处理地点的线程进行业务处理*/
     public synchronized void changeSite() {
-        this.site = "BeiJing";
+        this.site = "Beijing";
         notifyAll();
     }
 
@@ -33,7 +33,7 @@ public class Express {
         while (this.km < 100) {
             try {
                 wait();
-                System.out.println("Check Site thread["
+                System.out.println("Check Km thread["
                         + Thread.currentThread().getId()
                         + "] is be notified");
             } catch (InterruptedException e) {

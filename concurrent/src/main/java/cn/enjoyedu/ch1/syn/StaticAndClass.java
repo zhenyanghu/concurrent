@@ -38,7 +38,7 @@ public class StaticAndClass {
         synchronized (obj){
             System.out.println(Thread.currentThread().getName()
                     +"synStatic going...");
-            SleepTools.second(1);
+            SleepTools.second(5);
             System.out.println(Thread.currentThread().getName()
                     +"synStatic end");
         }
@@ -47,8 +47,8 @@ public class StaticAndClass {
     public static void main(String[] args) {
         StaticAndClass synClassAndInstance = new StaticAndClass();
         Thread t1 = new SynClass();
-        //Thread t2 = new SynStatic();
-        Thread t2 = new SynClass();
+        Thread t2 = new SynStatic();
+//        Thread t2 = new SynClass();
         t2.start();
         SleepTools.second(1);
         t1.start();
