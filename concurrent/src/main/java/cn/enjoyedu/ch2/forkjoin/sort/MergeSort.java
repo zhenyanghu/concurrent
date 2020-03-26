@@ -9,9 +9,9 @@ import java.util.Arrays;
  */
 public class MergeSort {
     public static int[] sort(int[] array) {
-        if(array.length<=MakeArray.THRESHOLD){
+        if (array.length <= MakeArray.THRESHOLD) {
             return InsertionSort.sort(array);
-        }else{
+        } else {
             /*切分数组，然后递归调用*/
             int mid = array.length / 2;
             int[] left = Arrays.copyOfRange(array, 0, mid);
@@ -19,6 +19,7 @@ public class MergeSort {
             return merge(sort(left), sort(right));
         }
     }
+
     /**
      * 归并排序——将两段排序好的数组结合成一个排序数组
      *
@@ -46,6 +47,6 @@ public class MergeSort {
         System.out.println("============================================");
         long start = System.currentTimeMillis();
         MergeSort.sort(MakeArray.makeArray());
-        System.out.println(" spend time:"+(System.currentTimeMillis()-start)+"ms");
+        System.out.println(" spend time:" + (System.currentTimeMillis() - start) + "ms");
     }
 }
