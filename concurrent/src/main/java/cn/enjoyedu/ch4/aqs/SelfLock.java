@@ -6,9 +6,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
- *
- *类说明：实现我们自己独占锁,不可重入
+ * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
+ * <p>
+ * 类说明：实现我们自己独占锁,不可重入
  */
 public class SelfLock implements Lock {
     // 静态内部类，自定义同步器
@@ -17,13 +17,13 @@ public class SelfLock implements Lock {
         /*判断处于占用状态*/
         @Override
         protected boolean isHeldExclusively() {
-            return getState()==1;
+            return getState() == 1;
         }
 
         /*获得锁*/
         @Override
         protected boolean tryAcquire(int arg) {
-            if(compareAndSetState(0,1)){
+            if (compareAndSetState(0, 1)) {
                 setExclusiveOwnerThread(Thread.currentThread());
                 return true;
             }
@@ -33,7 +33,7 @@ public class SelfLock implements Lock {
         /*释放锁*/
         @Override
         protected boolean tryRelease(int arg) {
-            if(getState()==0){
+            if (getState() == 0) {
                 throw new IllegalMonitorStateException();
             }
             setExclusiveOwnerThread(null);
@@ -52,9 +52,9 @@ public class SelfLock implements Lock {
     private final Sync sync = new Sync();
 
     public void lock() {
-    	System.out.println(Thread.currentThread().getName()+" ready get lock");
+        System.out.println(Thread.currentThread().getName() + " ready get lock");
         sync.acquire(1);
-        System.out.println(Thread.currentThread().getName()+" already got lock");
+        System.out.println(Thread.currentThread().getName() + " already got lock");
     }
 
     public boolean tryLock() {
@@ -62,9 +62,9 @@ public class SelfLock implements Lock {
     }
 
     public void unlock() {
-    	System.out.println(Thread.currentThread().getName()+" ready release lock");
+        System.out.println(Thread.currentThread().getName() + " ready release lock");
         sync.release(1);
-        System.out.println(Thread.currentThread().getName()+" already released lock");
+        System.out.println(Thread.currentThread().getName() + " already released lock");
     }
 
     public Condition newCondition() {
