@@ -3,7 +3,7 @@ package cn.enjoyedu.ch3;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *类说明：演示基本类型的原子操作类
+ * 类说明：演示基本类型的原子操作类
  */
 public class UseAtomicInt {
     static AtomicInteger ai = new AtomicInteger(10);

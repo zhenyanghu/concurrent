@@ -33,8 +33,7 @@ public class DBPool {
 
     /*获取*/
     // 在mills内无法获取到连接，将会返回null 1S
-    public Connection fetchConnection(long mills)
-            throws InterruptedException {
+    public Connection fetchConnection(long mills) throws InterruptedException {
         synchronized (pool) {
             //永不超时
             if (mills <= 0) {

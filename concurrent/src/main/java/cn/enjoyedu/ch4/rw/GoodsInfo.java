@@ -1,7 +1,7 @@
 package cn.enjoyedu.ch4.rw;
 
 /**
- *类说明：商品的实体类
+ * 类说明：商品的实体类
  */
 public class GoodsInfo {
     private final String name;
@@ -22,8 +22,8 @@ public class GoodsInfo {
         return storeNumber;
     }
 
-    public void changeNumber(int sellNumber){
-        this.totalMoney += sellNumber*25;
+    public void changeNumber(int sellNumber) {
+        this.totalMoney += sellNumber * 25;
         this.storeNumber -= sellNumber;
     }
 }

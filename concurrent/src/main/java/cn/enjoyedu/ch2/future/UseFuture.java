@@ -33,8 +33,7 @@ public class UseFuture {
         }
     }
 
-    public static void main(String[] args)
-            throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
 
         UseCallable useCallable = new UseCallable();
         //包装

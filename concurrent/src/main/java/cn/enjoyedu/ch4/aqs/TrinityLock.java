@@ -6,9 +6,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- *类说明：共享同步工具类
+ * 类说明：共享同步工具类
  */
-public class TrinityLock  implements Lock {
+public class TrinityLock implements Lock {
 
     //为n表示允许n个线程同时获得锁
     private final Sync sync = new Sync(4);
@@ -24,13 +24,12 @@ public class TrinityLock  implements Lock {
         }
 
         /**
-         *
-         * @param reduceCount  扣减个数
-         * @return  返回小于0，表示当前线程获得同步状态失败
+         * @param reduceCount 扣减个数
+         * @return 返回小于0，表示当前线程获得同步状态失败
          * 大于0，表示当前线程获得同步状态成功
          */
         public int tryAcquireShared(int reduceCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current - reduceCount;
                 if (newCount < 0 || compareAndSetState(current, newCount)) {
@@ -40,12 +39,11 @@ public class TrinityLock  implements Lock {
         }
 
         /**
-         *
          * @param returnCount 归还个数
          * @return
          */
         public boolean tryReleaseShared(int returnCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current + returnCount;
                 if (compareAndSetState(current, newCount)) {

@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * 类说明：
  */
-public class UseRwLock  implements GoodsService{
+public class UseRwLock implements GoodsService {
 
     private GoodsInfo goodsInfo;
 
@@ -24,10 +24,10 @@ public class UseRwLock  implements GoodsService{
     @Override
     public GoodsInfo getNum() {
         getLock.lock();
-        try{
+        try {
             SleepTools.ms(5);
             return this.goodsInfo;
-        }finally {
+        } finally {
             getLock.unlock();
         }
     }
@@ -35,10 +35,10 @@ public class UseRwLock  implements GoodsService{
     @Override
     public void setNum(int number) {
         setLock.lock();
-        try{
+        try {
             SleepTools.ms(5);
             goodsInfo.changeNumber(number);
-        }finally {
+        } finally {
             setLock.unlock();
         }
     }

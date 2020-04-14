@@ -20,7 +20,7 @@ public class NormalDeadLock {
     }
 
     //先拿第二个锁，再拿第一个锁
-    private static void SecondToFisrt() throws InterruptedException {
+    private static void SecondToFirst() throws InterruptedException {
         String threadName = Thread.currentThread().getName();
         synchronized (valueFirst){
             System.out.println(threadName+" get 2nd");
@@ -42,7 +42,7 @@ public class NormalDeadLock {
         public void run(){
             Thread.currentThread().setName(name);
             try {
-                SecondToFisrt();
+                SecondToFirst();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
